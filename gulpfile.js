@@ -8,19 +8,17 @@ nunjucksRender.nunjucks.configure(['templates/']);
 gulp.task('default', function () {
 
     // this is the path to the HTML files
-    gulp.src('templates/components/*.html')
+    gulp.src('templates/site-pages/*.html')
         .pipe(nunjucksRender())
-
-        // rendered static HTML files are output here
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist')); // output location
 
 });
 
 // gulp watch
 gulp.task('watch', function () {
 
-    gulp.src('templates/components/*.html')
-        .pipe(gulpWatch('templates/components/*.html', function(files) {
+    gulp.src('templates/site-pages/*.html')
+        .pipe(gulpWatch('templates/site-pages/*.html', function(files) {
             return files
                 .pipe(nunjucksRender())
                 .pipe(gulp.dest('dist'));
